@@ -5,6 +5,14 @@ project(ImGui_Resources)
 
 add_executable(Dear_ImGui_FontEmbed ${CMAKE_SOURCE_DIR}/externals/dear_imgui/misc/fonts/binary_to_compressed_c.cpp)
 
+if (ANDROID)
+    # This tool is compiled for the target (Android) but must run on the
+    # build host during the build (via QEMU user-mode emulation) to
+    # generate font source files. Link it fully static so it needs no
+    # Android device linker (/system/bin/linker64) to execute.
+    target_link_options(Dear_ImGui_FontEmbed PRIVATE -static)
+endif()
+
 set(FONT_LIST
     NotoSansJP-Regular.ttf
     ProggyVector-Regular.ttf
