@@ -19,7 +19,8 @@ android {
                 arguments "-DENABLE_QT_GUI=OFF",
                           "-DENABLE_DISCORD_RPC=OFF",
                           "-DENABLE_UPDATER=OFF",
-                          "-DCMAKE_BUILD_TYPE=Release"
+                          "-DCMAKE_BUILD_TYPE=Release",
+                          "-DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/qemu-aarch64-static"
                 abiFilters "arm64-v8a"
             }
         }
